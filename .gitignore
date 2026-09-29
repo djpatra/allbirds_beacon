@@ -1,0 +1,11 @@
+# Generated journey dumps — too large for GitHub (>100MB). Keep parquet locally.
+demand_shopper/events.jsonl
+demand_shopper/sessions.jsonl
+demand_shopper/daily_metrics.jsonl
+demand_shopper/ground_truth.jsonl
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
