@@ -1,0 +1,65 @@
+[+] Loaded 9300 SKU(s) from allbirds_products.json
+[+] Created 50000 shoppers; simulating 90 day(s), seed=42
+[+] Daily sales floor: 2000 successful purchases/day (fill shortfall; organic may exceed)
+[+] Archetype mix: {'decisive': 0.05, 'casual': 0.19, 'comparer': 0.19, 'deal_hunter': 0.19, 'size_constrained': 0.19, 'wishlist_filler': 0.19}
+[+] Event types: ['search', 'product_view', 'sku_view', 'add_to_cart', 'add_to_wishlist', 'subscribe_back_in_stock', 'subscribe_price_drop', 'purchase', 'bounce']
+[+] Wrote 9,300 SKUs to ./demand_shopper/catalog.json
+[+] Wrote shoppers → ./demand_shopper/shoppers.jsonl
+  [day 9/90] events=429,192 sessions=84,554 purchases_ok=30,908 day_sales=7,079 (injected=0)
+  [day 18/90] events=930,858 sessions=195,702 purchases_ok=96,413 day_sales=7,230 (injected=0)
+  [day 27/90] events=1,439,095 sessions=308,418 purchases_ok=161,551 day_sales=7,253 (injected=0)
+  [day 36/90] events=1,948,735 sessions=421,154 purchases_ok=227,783 day_sales=7,344 (injected=0)
+  [day 45/90] events=2,456,456 sessions=533,534 purchases_ok=293,365 day_sales=7,329 (injected=0)
+  [day 54/90] events=2,962,089 sessions=645,552 purchases_ok=359,391 day_sales=7,249 (injected=0)
+  [day 63/90] events=3,467,968 sessions=757,725 purchases_ok=425,232 day_sales=7,249 (injected=0)
+  [day 72/90] events=3,972,484 sessions=869,468 purchases_ok=490,235 day_sales=7,331 (injected=0)
+  [day 81/90] events=4,478,806 sessions=981,768 purchases_ok=556,366 day_sales=7,356 (injected=0)
+  [day 90/90] events=4,982,368 sessions=1,093,596 purchases_ok=621,486 day_sales=7,151 (injected=0)
+[+] Wrote parquet ./demand_shopper/daily_metrics.parquet (6,826,260 bytes)
+[+] Wrote parquet ./demand_shopper/ground_truth.parquet (6,075,515 bytes)
+
+--- Summary (shopper journeys) ---
+Days:                 90
+Shoppers:             50,000
+Sessions:             1,093,596
+Events:               4,982,368
+Purchases (success):  621,486
+Purchases (OOS block):40,307
+  same-session ok:    40,615
+  delayed ok:         580,871
+  injected (floor):   3,438
+Daily sales floor:    2,000 (at-least / fill shortfall)
+Purchases/day:        min=2,000  mean=6,905.4  max=7,549
+Days below floor:     0
+
+Archetype counts:
+  decisive               2500  (5.0%)
+  casual                 9500  (19.0%)
+  comparer               9500  (19.0%)
+  deal_hunter            9500  (19.0%)
+  size_constrained       9500  (19.0%)
+  wishlist_filler        9500  (19.0%)
+
+Event-type funnel totals:
+  search                            260,781
+  product_view                      830,500
+  sku_view                        1,342,011
+  add_to_cart                       204,210
+  add_to_wishlist                   431,693
+  subscribe_back_in_stock            20,729
+  subscribe_price_drop              137,055
+  purchase                          661,793
+  bounce                          1,093,596
+
+Sanity checks:
+  PASS unique shoppers (50000)
+  PASS archetype mix within band
+  PASS views(2,172,511) >= cart(204,210); wishlist=431,693 pricedrop=137,055
+  PASS at least one successful purchase
+  PASS daily sales floor: min/day=2,000 vs target>=2,000 (injected=3,438)
+
+Outputs under: ./demand_shopper
+
+[+] Done.
+ELAPSED_SEC=1197.36
+EXIT:0
